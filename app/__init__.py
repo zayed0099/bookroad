@@ -17,18 +17,24 @@ def create_app():
 
 	db.init_app(app) # adding the db inside the app
 
-	from . import models  # Import models from the current directory
+	from app import models  # Import models from the current directory
 	
+	with app.app_context(): # creating all the database tables
+		db.create_all()
+
 	# Initializing the Login manager and adding it to the code
 	login_manager = LoginManager()
 	login_manager.init_app(app)
 
+	from app.routes import setup_routes
+	setup_routes(app)
+
+	return app
 
 	
 
 
-	with app.app_context(): # creating all the database tables
-		db.create_all()
+	
 
 
 
