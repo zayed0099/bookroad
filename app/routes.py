@@ -102,7 +102,7 @@ def setup_routes(app):
                     db.session.rollback()
                     return jsonify({'message': 'Invalid input'})
 
-                    return render_template('dashboard.html', books=books, form=form)
+            return redirect(url_for('dashboard'))
 
         else:
             return render_template('dashboard.html', books=books, form=form)

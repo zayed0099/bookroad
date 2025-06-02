@@ -30,7 +30,6 @@
      <table>
         <thead>
             <tr>
-                <th>ID</th>
                 <th>Title</th>
                 <th>Author</th>
                 <th>Status</th>
@@ -39,7 +38,6 @@
         <tbody>
                 {% for data in books %}
             <tr>
-                <td>{{ data.id }}</td>
                 <td>{{ data.title }}</td>
                 <td>{{ data.author }}</td>
                 <td>{{ data.status }}</td>
@@ -47,6 +45,7 @@
             {% endfor %}
         </tbody>
     </table>
+    
     <a href="{{ url_for('logout') }}"><button>Logout</button></a>
     </div>
 
