@@ -79,4 +79,13 @@ def setup_routes(app):
     @app.route('/dashboard')
     @login_required
     def dashboard():
-        return render_template('dashboard.html')
+    	books = Books.query.all()
+    	if request.method == 'POST':
+
+        else:
+
+        	return render_template('dashboard.html', books=books)
+
+    @app.route('/dashbaord/view/')
+    @login_required
+    def view_all():
