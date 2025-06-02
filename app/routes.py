@@ -14,7 +14,7 @@ from app.models import User, Books
 '''
 
 def setup_routes(app):
-    @app.route("/home")
+    @app.route("/")
     def home():
         return render_template('home.html')
 
@@ -79,13 +79,13 @@ def setup_routes(app):
     @app.route('/dashboard')
     @login_required
     def dashboard():
-    	books = Books.query.all()
-    	if request.method == 'POST':
-
+        books = Books.query.all()
+        if request.method == 'POST':
+            pass
         else:
-
-        	return render_template('dashboard.html', books=books)
+            return render_template('dashboard.html', books=books)
 
     @app.route('/dashbaord/view/')
     @login_required
     def view_all():
+        pass
