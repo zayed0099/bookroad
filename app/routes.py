@@ -109,5 +109,7 @@ def setup_routes(app):
 
     @app.route('/dashbaord/view/')
     @login_required
-    def view_all():
-        pass
+    def filter_update_delete():
+        books = Books.query.filter_by(user_id=current_user.id).all()
+
+        return render_template('filter_update_delete.html', books=books)

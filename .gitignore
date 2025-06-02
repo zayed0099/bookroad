@@ -150,6 +150,7 @@ venv.bak/
 .mypy_cache/
 .dmypy.json
 dmypy.json
+.db
 
 # Pyre type checker
 .pyre/
@@ -172,3 +173,15 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+# Flask-specific
+instance/
+.env
+*.env
+
+# SQLite DB (if using SQLite)
+*.db
+*.sqlite3
+bookroad.db  # if you use this exact filename
+
+# Flask-Migrate auto-generated
+migrations/__pycache__/
