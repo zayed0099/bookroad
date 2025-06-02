@@ -76,14 +76,36 @@ def setup_routes(app):
         logout_user()
         return redirect(url_for('home'))
 
-    @app.route('/dashboard')
+    @app.route('/dashboard', methods=['GET', 'POST'])
     @login_required
     def dashboard():
-        books = Books.query.filter_by(user_id=current_user.id)
-        if request.method == 'POST':
-            pass
+        books = Books.query.filter_by(user_id=current_user.id).all()
+        form = BookQueryForm()
+
+        if form.validate_on_submit():
+            book_title = form.book_title.data
+            author = form.author.data
+            status = form.status.data
+
+            verify = Books.query.filter_by(title=book_title).all()
+
+            if verify:
+                flash('Book already exists')
+            else:
+                new_book_entry = Books(title=book_title, author=author, status=status, user_id=current_user.id)
+
+                try:
+                    db.session.add(new_book_entry)
+                    db.session.commit()
+                    flash('Book added successfully!')
+                except SQLAlchemyError as e:
+                    db.session.rollback()
+                    return jsonify({'message': 'Invalid input'})
+
+                    return render_template('dashboard.html', books=books, form=form)
+
         else:
-            return render_template('dashboard.html', books=books)
+            return render_template('dashboard.html', books=books, form=form)
 
     @app.route('/dashbaord/view/')
     @login_required

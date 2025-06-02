@@ -8,6 +8,11 @@
 <body>
     <h1>SignIn</h1>
     <p>This is the signin page.</p>
+    {% for message in get_flashed_messages() %}
+    <p>{{ message }}</p>
+    {% endfor %}
+    <a href="{{ url_for('login') }}"><button>Login</button></a>
+    <a href="{{ url_for('home') }}"><button>Home</button></a>
      <form method="POST">
         {{ form.hidden_tag() }}
         <p>
