@@ -10,7 +10,7 @@ from app.models import User, Books
 -home.html(default page) = done
 -signin.html = done
 -login.html = done
--dashboard.html = done  
+-dashboard.html = work in progress  
 '''
 
 def setup_routes(app):
@@ -79,7 +79,7 @@ def setup_routes(app):
     @app.route('/dashboard')
     @login_required
     def dashboard():
-        books = Books.query.all()
+        books = Books.query.filter_by(user_id=current_user.id)
         if request.method == 'POST':
             pass
         else:
