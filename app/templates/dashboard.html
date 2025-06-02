@@ -4,30 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BookLog-Dashboard</title>
-    <style >
-    	table, th, td {
-  border: 1px solid black;
-  border-collapse: collapse;
-}
-.container {
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* Creates two columns */
-    height: 100vh;
-}
-
-.grid-item {
-    padding: 20px;
-    background-color: white; /* Optional background color */
-}
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="{{ url_for('static', filename='dashboard.css') }}"> <!-- importing css -->
 </head>
 <body>
+	<center><h1>Dashboard</h1></center>
     <div class="container">
     <!-- Left Side of the grid -->
     <div class="grid-item">
-        <h1>Dashboard</h1>
-    <p>You are seeing this page because you are logged in.</p>
-     <table>
+        
+     <table id="customers">
         <thead>
             <tr>
                 <th>Title</th>
@@ -50,9 +36,10 @@
     </div>
 
     <!-- Right Side of the grid -->
-    <div class="grid-item">Right Panel Content
+    <div class="grid-item"><!-- Right Panel Content -->
+    	<center>
 <h1>Add new book</h1>
-
+</center>
 {% for message in get_flashed_messages() %}
     <p>{{ message }}</p>
     {% endfor %}
@@ -71,7 +58,9 @@
             {{ form.status.label }}  
             {{ form.status }}
         </p>
+        <center>
         <p>{{ form.submit() }}</p>
+    	</center>
     </form>
 
     </div>
