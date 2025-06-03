@@ -10,7 +10,8 @@ from app.models import User, Books
 -home.html(default page) = done
 -signin.html = done
 -login.html = done
--dashboard.html = work in progress  
+-dashboard.html = work in progress
+-filter_update_delete.html = work in progress
 '''
 
 def setup_routes(app):
@@ -86,13 +87,14 @@ def setup_routes(app):
             book_title = form.book_title.data
             author = form.author.data
             status = form.status.data
+            normalized = book_title.strip().lower()
 
-            verify = Books.query.filter_by(title=book_title).all()
+            verify = Books.query.filter_by(title_normalized=normalized, user_id=current_user.id).all()
 
             if verify:
                 flash('Book already exists')
             else:
-                new_book_entry = Books(title=book_title, author=author, status=status, user_id=current_user.id)
+                new_book_entry = Books(title=book_title, title_normalized=normalized, author=author, status=status, user_id=current_user.id)
 
                 try:
                     db.session.add(new_book_entry)
@@ -111,5 +113,4 @@ def setup_routes(app):
     @login_required
     def filter_update_delete():
         books = Books.query.filter_by(user_id=current_user.id).all()
-
         return render_template('filter_update_delete.html', books=books)
