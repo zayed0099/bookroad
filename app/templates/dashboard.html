@@ -44,7 +44,9 @@
 <h1>Add new book</h1>
 </center>
 {% for message in get_flashed_messages() %}
+    <div class="alert">
     <p>{{ message }}</p>
+    </div>
     {% endfor %}
 
      <form method="POST">
