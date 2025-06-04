@@ -5,6 +5,8 @@ from flask_login import login_user, logout_user, login_required, current_user
 from app.forms import SignInForm, LoginForm, BookQueryForm
 from werkzeug.security import generate_password_hash, check_password_hash
 from app.models import User, Books
+from sqlalchemy import or_
+from sqlalchemy.orm import joinedload
 '''
 * List of all html files needed
 -home.html(default page) = done
@@ -109,8 +111,24 @@ def setup_routes(app):
         else:
             return render_template('dashboard.html', books=books, form=form)
 
-    @app.route('/dashbaord/view/')
+    @app.route('/dashboard/view/', methods=['GET', 'POST'])
     @login_required
     def filter_update_delete():
-        books = Books.query.filter_by(user_id=current_user.id).all()
-        return render_template('filter_update_delete.html', books=books)
+        if request.method == 'POST':
+            input_user = request.form.get('filter_data_query').strip()
+            search_term = f"%{input_user}%"
+
+            fil_data = Books.query.join(User).filter(
+                # only current users data
+                Books.user_id == current_user.id,
+                or_(
+                Books.title_normalized.ilike(search_term),
+                Books.author.ilike(search_term),
+                Books.status.ilike(search_term)
+                )
+            ).all()    
+            return render_template('filter_update_delete.html', books=fil_data)
+
+        else:
+            books = Books.query.filter_by(user_id=current_user.id).all()
+            return render_template('filter_update_delete.html', books=books)
