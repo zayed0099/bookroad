@@ -10,6 +10,14 @@
     <a href="{{ url_for('dashboard') }}"><button>Dashboard</button></a><br>
 
     <center><h1>Showing All Books</h1></center>
+    <div>
+    <form action="{{ url_for('filter_update_delete') }}" method="post">
+    <label for="filter_data_query">Filter data</label><br>
+    <input type="text" id="filter_data_query" name="filter_data_query" placeholder="Looking for something specific?">
+    <button type="submit">Submit</button>
+    </div>
+
+
     <table>
     	 <thead>
             <tr>

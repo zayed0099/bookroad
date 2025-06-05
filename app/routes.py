@@ -14,6 +14,7 @@ from sqlalchemy.orm import joinedload
 -login.html = done
 -dashboard.html = work in progress
 -filter_update_delete.html = work in progress
+-update_form.html = not started
 '''
 
 def setup_routes(app):
@@ -115,7 +116,7 @@ def setup_routes(app):
     @login_required
     def filter_update_delete():
         if request.method == 'POST':
-            input_user = request.form.get('filter_data_query').strip()
+            input_user = request.form.get('filter_data_query', '').strip()
             search_term = f"%{input_user}%"
 
             fil_data = Books.query.join(User).filter(
@@ -126,9 +127,28 @@ def setup_routes(app):
                 Books.author.ilike(search_term),
                 Books.status.ilike(search_term)
                 )
-            ).all()    
+            ).all()
+                
             return render_template('filter_update_delete.html', books=fil_data)
 
         else:
             books = Books.query.filter_by(user_id=current_user.id).all()
             return render_template('filter_update_delete.html', books=books)
+
+    @app.route('/dashboard/update/<int:id>', methods=["GET", "POST"])
+    @login_required
+    def update_data(id):
+        user_to_update = Books.query.filter(
+            Books.id == id, 
+            Books.user_id == current_user.id
+        ).first_or_404()
+
+        form = BookQueryForm()
+
+        if form.validate_on_submit():
+            user_to_update.title = form.book_title.data
+            user_to_update.author = form.author.data
+            user_to_update.status = form.status.data
+            user_to_update.title_normalized = form.book_title.data.strip().lower()
+        else:
+            return render_template('update_form.html', id=id)
