@@ -1,13 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BookLog-Dashboard</title>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="{{ url_for('static', filename='dashboard.css') }}"> <!-- importing css -->
-</head>
-<body>
+{% extends "base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
 	<center>
         <h1>Dashboard</h1><br>
     <a href="{{ url_for('filter_update_delete') }}"><button>View All</button></a>
@@ -71,5 +66,5 @@
     </div>
 </div>
     
-</body>
-</html>
+{% endblock %}
+
