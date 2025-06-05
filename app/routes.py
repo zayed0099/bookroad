@@ -150,5 +150,10 @@ def setup_routes(app):
             user_to_update.author = form.author.data
             user_to_update.status = form.status.data
             user_to_update.title_normalized = form.book_title.data.strip().lower()
+            db.session.commit()
+
+            books = Books.query.filter_by(user_id=current_user.id).all()
+
+            return render_template('dashboard.html', books=books)
         else:
-            return render_template('update_form.html', id=id)
+            return render_template('update_form.html', id=id, form=form, book_title=book_title, author=author, status=status)

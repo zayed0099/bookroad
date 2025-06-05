@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Book Log</title>
+</head>
+<body>
+
+<center>
+<h1>Update book</h1>
+
+{% for message in get_flashed_messages() %}
+    <div class="alert">
+    <p>{{ message }}</p>
+    </div>
+    {% endfor %}
+
+     <form method="POST">
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.book_title.label }}<br>
+            {{ form.book_title(size=32) }}
+        </p>
+        <p>
+            {{ form.author.label }}<br>
+            {{ form.author(size=32) }}
+        </p>
+        <p>
+            {{ form.status.label }}  
+            {{ form.status }}
+        </p>
+        <center>
+        <p>{{ form.submit() }}</p>
+    	</center>
+    </form>
+</center>
+</body>
+</html>
