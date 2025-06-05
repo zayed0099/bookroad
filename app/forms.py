@@ -23,3 +23,12 @@ class BookQueryForm(FlaskForm):
 	status = SelectField('Select Status', choices=choices, validators=[DataRequired()])
 
 	submit = SubmitField('Submit')
+
+class BookUpdateForm(FlaskForm):
+	title = StringField('Enter the Book Name.')
+	author = StringField('Enter the author name.')
+	
+	choices = [('To Read', 'To Read'), ('Reading', 'Reading'), ('Read', 'Read')]
+	status = SelectField('Select Status', choices=choices)
+
+	submit = SubmitField('Submit')

@@ -2,7 +2,7 @@ from flask import redirect, url_for, render_template, request, session, flash, j
 from app import db, login_manager
 from sqlalchemy.exc import SQLAlchemyError
 from flask_login import login_user, logout_user, login_required, current_user
-from app.forms import SignInForm, LoginForm, BookQueryForm
+from app.forms import SignInForm, LoginForm, BookQueryForm, BookUpdateForm
 from werkzeug.security import generate_password_hash, check_password_hash
 from app.models import User, Books
 from sqlalchemy import or_
@@ -143,17 +143,17 @@ def setup_routes(app):
             Books.user_id == current_user.id
         ).first_or_404()
 
-        form = BookQueryForm()
+        form = BookUpdateForm(obj=user_to_update)
 
         if form.validate_on_submit():
-            user_to_update.title = form.book_title.data
+            user_to_update.title = form.title.data
             user_to_update.author = form.author.data
             user_to_update.status = form.status.data
-            user_to_update.title_normalized = form.book_title.data.strip().lower()
+            user_to_update.title_normalized = form.title.data.strip().lower()
             db.session.commit()
 
             books = Books.query.filter_by(user_id=current_user.id).all()
 
-            return render_template('dashboard.html', books=books)
+            return redirect(url_for('filter_update_delete'))
         else:
-            return render_template('update_form.html', id=id, form=form, book_title=book_title, author=author, status=status)
+            return render_template('update_form.html', id=id, form=form)

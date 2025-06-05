@@ -30,9 +30,7 @@ class Books(db.Model):
 	__table_args__ = (
     db.UniqueConstraint('user_id', 'title_normalized', name='uq_user_title_normalized'),
 )
-
-
-
+	
 	def __repr__(self):
 		return f'<Author {self.title}>'
 
