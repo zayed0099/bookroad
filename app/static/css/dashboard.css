@@ -11,6 +11,8 @@ body {
 #customers td, #customers th {
   border: 1px solid #ddd;
   padding: 8px;
+  border-radius: 10px;
+  text-align: center;
 }
 
 #customers tr:nth-child(even){background-color: #f2f2f2;}
@@ -23,6 +25,7 @@ body {
   text-align: center;
   background-color: #000000;
   color: white;
+
 }
     	*{
     		margin-top: 15px;
