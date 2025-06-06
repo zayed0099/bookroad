@@ -9,19 +9,26 @@
     <p>{{ message }}</p>
     {% endfor %}
 
+
      <form method="POST">
         {{ form.hidden_tag() }}
+        <div class="form-group">
         <p>
             {{ form.email.label }}<br>
             {{ form.email(size=32) }}
         </p>
+    </div>
+    <div class="form-group">
         <p>
             {{ form.password.label }}<br>
             {{ form.password(size=32) }}
         </p>
+    </div>
+    <div class="form-group">
         <p>{{ form.submit(class="btn btn-warning") }}</p>
+    </div>
     </form>
-<a href="{{ url_for('signin') }}"><button type="button" class="btn btn-outline-info btn-rounded" data-mdb-ripple-init  data-mdb-ripple-color="dark">Don't have an account?</button></a>
-<a href="{{ url_for('home') }}"><button type="button" class="btn btn-outline-success btn-rounded" data-mdb-ripple-init  data-mdb-ripple-color="dark">Home</button></a>
+<a href="{{ url_for('signin') }}"><button type="button" class="btn btn-outline-info btn-rounded" data-mdb-ripple-init  data-mdb-ripple-color="dark">Don't have an account? Sign Up</button></a>
 </center>
+
 {% endblock %}
