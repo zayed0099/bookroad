@@ -1,10 +1,10 @@
 /* Make the whole page take full height and use flex layout */
 html, body {
   height: 100%;
-  display: flex;
   flex-direction: column;
-    width: 1100px;       /* set a fixed width */
+  width: 1100px;       /* set a fixed width */
   margin: 0 auto; 
+  display: flex;
 }
 
 /* Content grows to fill available space */
