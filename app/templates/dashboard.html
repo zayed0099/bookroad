@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "base_loggedin.html" %}
 
 {% block title %}Dashboard{% endblock %}
 
@@ -30,7 +30,7 @@
         </tbody>
     </table>
     
-    <a href="{{ url_for('logout') }}"><button type="button" class="btn btn-danger active">Logout</button></a>
+    <!-- <a href="{{ url_for('logout') }}"><button type="button" class="btn btn-danger active">Logout</button></a> -->
     </div>
 
     <!-- Right Side of the grid -->
