@@ -1,0 +1,14 @@
+
+.parent-container {
+  display: grid;
+  place-items: center;  /* centers horizontally and vertically */
+  height: 100vh;        /* full viewport height */
+}
+
+.centered-div {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* optionally set width and height */
+}

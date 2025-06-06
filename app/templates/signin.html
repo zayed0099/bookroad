@@ -5,7 +5,7 @@
 {% block content %}
      <center>
     <h1>SignIn</h1>
-    <p>Create a new account..</p>
+    <p id="create-account">Create a new account..</p>
     {% for message in get_flashed_messages() %}
     <p>{{ message }}</p>
     {% endfor %}
@@ -14,19 +14,27 @@
     
      <form method="POST">
         {{ form.hidden_tag() }}
+        <div class="form-group">
         <p>
             {{ form.username.label }}<br>
             {{ form.username(size=32) }}
         </p>
+    </div>
+    <div class="form-group">
         <p>
         	{{ form.email.label }}<br>
             {{ form.email(size=32) }}
         </p>
+    </div>
+    <div class="form-group">
         <p>
             {{ form.password.label }}<br>
             {{ form.password(size=32) }}
         </p>
+    </div>
+    <div class="form-group">
         <p>{{ form.submit(class="btn btn-primary btn-block mb-4") }}</p>
+    </div>
     </form>
     <a href="{{ url_for('login') }}"><button type="button" class="btn btn-outline-info btn-rounded" data-mdb-ripple-init  data-mdb-ripple-color="dark">Already have an account?</button></a>
 </center>
