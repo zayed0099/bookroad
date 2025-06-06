@@ -10,13 +10,13 @@
         <center>
     <form action="{{ url_for('filter_update_delete') }}" method="post">
     <!-- <label for="filter_data_query">Filter data</label><br> -->
-    <input type="text" id="filter_data_query" name="filter_data_query" placeholder="Looking for something specific?">
+    <input type="text" class="form-control" name="filter_data_query" placeholder="Looking for something specific?">
    <button type="button" class="btn btn-outline-success" data-mdb-ripple-init data-mdb-ripple-color="dark">Search</button>
 </center>
     </form>
     </div>
 
-
+</div class="table-filter">
     <table id="customers">
     	 <thead>
             <tr>
@@ -38,6 +38,7 @@
             {% endfor %}
         </tbody>
     </table>
+</div>
 </div>
 </div>
 {% endblock %}
