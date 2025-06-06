@@ -5,7 +5,7 @@
 {% block content %}
 	<center>
         <h1>Dashboard</h1><br>
-    <a href="{{ url_for('filter_update_delete') }}"><button>View All</button></a>
+    <a href="{{ url_for('filter_update_delete') }}"><button type="button" class="btn btn-outline-dark">View All</button></a>
     </center>
     <div class="container">
     <!-- Left Side of the grid -->
@@ -30,28 +30,31 @@
         </tbody>
     </table>
     
-    <a href="{{ url_for('logout') }}"><button>Logout</button></a>
+    <a href="{{ url_for('logout') }}"><button type="button" class="btn btn-danger active">Logout</button></a>
     </div>
 
     <!-- Right Side of the grid -->
     <div class="grid-item"><!-- Right Panel Content -->
-    	<center>
-<h1>Add new book</h1>
-</center>
+  
 {% for message in get_flashed_messages() %}
     <div class="alert">
     <p>{{ message }}</p>
     </div>
     {% endfor %}
 
-     <form method="POST">
+     <form method="POST" class="p-4 border rounded shadow-sm">
+<center>
+<h1>Add new book</h1>
+</center>
         {{ form.hidden_tag() }}
+        
         <p>
-            {{ form.book_title.label }}<br>
+            {{ form.book_title.label(class="form-label") }}<br>
             {{ form.book_title(size=32) }}
         </p>
+    
         <p>
-            {{ form.author.label }}<br>
+            {{ form.author.label(class="form-label")  }}<br>
             {{ form.author(size=32) }}
         </p>
         <p>
@@ -59,7 +62,7 @@
             {{ form.status }}
         </p>
         <center>
-        <p>{{ form.submit() }}</p>
+        <p>{{ form.submit(class="btn btn-primary btn-block mb-4") }}</p>
     	</center>
     </form>
 

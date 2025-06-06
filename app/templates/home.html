@@ -3,10 +3,12 @@
 {% block title %}Home Page{% endblock %}
 
 {% block content %}
+    <center>
     <h1>Welcome to My BOOk Log</h1>
     <p>This is a Book Log to keep track of all your books.</p>
-    <a href="{{ url_for('signin') }}"><button>Signin</button></a>
-    <a href="{{ url_for('login') }}"><button>Login</button></a>
-    <a href="{{ url_for('dashboard') }}"><button>Dashboard</button></a>
+    <a href="{{ url_for('signin') }}"><button type="button" class="btn btn-outline-dark">Signin</button></a>
+    <a href="{{ url_for('login') }}"><button type="button" class="btn btn-outline-dark">Login</button></a>
+    <a href="{{ url_for('dashboard') }}"><button type="button" class="btn btn-outline-dark">Dashboard</button></a>
+    </center>
 
 {% endblock %}

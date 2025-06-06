@@ -3,6 +3,7 @@
 {% block title %}Login Page{% endblock %}
 
 {% block content %}
+   <center>
     <h3>Login to your account.</h3>
     {% for message in get_flashed_messages() %}
     <p>{{ message }}</p>
@@ -18,9 +19,9 @@
             {{ form.password.label }}<br>
             {{ form.password(size=32) }}
         </p>
-        <p>{{ form.submit() }}</p>
+        <p>{{ form.submit(class="btn btn-warning") }}</p>
     </form>
-<a href="{{ url_for('signin') }}"><button>Signin</button></a>
-<a href="{{ url_for('home') }}"><button>Home</button></a>
-
+<a href="{{ url_for('signin') }}"><button type="button" class="btn btn-outline-info btn-rounded" data-mdb-ripple-init  data-mdb-ripple-color="dark">Don't have an account?</button></a>
+<a href="{{ url_for('home') }}"><button type="button" class="btn btn-outline-success btn-rounded" data-mdb-ripple-init  data-mdb-ripple-color="dark">Home</button></a>
+</center>
 {% endblock %}
