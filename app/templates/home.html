@@ -5,6 +5,7 @@
 {% block content %}
     <div class="home-page">
     <center>
+    	<img src="{{ url_for('static', filename='images/library.jpg') }}" alt="My Profile Picture" width="300">
     <h1>Welcome to My BookROAD</h1>
     <p>A Book Log to keep track of all your books.</p>
     <a href="{{ url_for('signin') }}"><button type="button" class="btn btn-outline-dark">Start Your Journey</button></a>
@@ -13,3 +14,6 @@
     </center>
     </div>
 {% endblock %}
+
+<!-- image link 
+:- https://www.vecteezy.com/vector-art/58385088-ornate-black-white-library-symbol-featuring-books-on-shelves-classic-architecture-elements-and-open-books -->
