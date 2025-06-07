@@ -157,3 +157,25 @@ def setup_routes(app):
             return redirect(url_for('filter_update_delete'))
         else:
             return render_template('update_form.html', id=id, form=form)
+
+    @app.route('/dashboard/delete/<int:id>', methods=["GET", "POST"])
+    @login_required
+    def delete_data(id):
+        user_to_update = Books.query.filter(
+            Books.id == id, 
+            Books.user_id == current_user.id
+        ).first_or_404()
+
+        form = BookUpdateForm(obj=user_to_update)
+
+        if request.method == 'POST':
+            confirmation = request.form.get['confirm']
+
+            if confirmation.strip().lower() == 'delete':
+                db.session.delete(user_to_update)
+                db.session.commit()
+                return redirect(url_for('filter_update_delete'))
+
+        else:
+            return render_template('delete_form.html', form=form, id=id)
+                

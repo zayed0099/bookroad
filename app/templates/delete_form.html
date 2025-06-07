@@ -1,0 +1,43 @@
+{% extends "base_loggedin.html" %}
+
+{% block title %}Update{% endblock %}
+
+{% block content %}
+<center>
+<h1>Delete book</h1>
+
+{% for message in get_flashed_messages() %}
+    <div class="alert">
+    <p>{{ message }}</p>
+    </div>
+    {% endfor %}
+
+     <form method="POST">
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.title.label }}<br>
+            {{ form.title(size=32) }}
+        </p>
+        <p>
+            {{ form.author.label }}<br>
+            {{ form.author(size=32) }}
+        </p>
+        <p>
+            {{ form.status.label }}  
+            {{ form.status }}
+        </p>
+        <center>
+
+        <!-- <p>{{ form.submit(class="btn btn-primary btn-block mb-4") }}</p> -->
+    	</center>
+    </form>
+    
+    <!-- form for confirmation -->
+    <form method="POST" action="{{ url_for('delete_data', id=id) }}">
+    <input type="text" name="confirm" placeholder="Enter 'delete' to confirm">
+    <input type="submit">
+    </form>
+
+</center>
+
+{% endblock %}
