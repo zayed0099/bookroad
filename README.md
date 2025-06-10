@@ -1,3 +1,59 @@
-[Work In Progress]
-A BookLog which will allow users to securely register, log in, and maintain a personal journal of books
-they have read or wish to read.
+# Flask Booklog App
+
+A simple **Booklog web application** built with Flask, allowing users to track their books with CRUD functionality, user authentication, and book status management. This project was developed in 15 days as a learning exercise and uses the **Flask Application Factory pattern** for better structure and scalability.
+
+---
+
+## Features
+
+- User registration and login with secure password hashing
+- Add, update, delete, and filter books by title, author, or status
+- Book statuses: *To Read*, *Reading*, *Read*
+- Each user can only access and manage their own books
+- Uses Flask-WTF for secure form handling and validation
+- Database management with SQLAlchemy ORM and Flask-Migrate
+- User session management with Flask-Login
+- Flash messages for user-friendly notifications
+
+---
+
+## Technology Stack
+
+- Python 3.x
+- Flask (with App Factory Pattern)
+- Flask-WTF (Forms)
+- Flask-Login (Authentication)
+- Flask-SQLAlchemy (ORM)
+- Flask-Migrate (Database migrations)
+- SQLite (Development database)
+
+---
+
+## Usage
+
+- Register a new user account on the Sign In page.
+- Log in using your email and password.
+- Add books with their title, author, and status.
+- Update or delete your existing books.
+- Filter and search books by title, author, or status on the dashboard.
+
+---                                                               
+
+## Future Improvements
+
+- Modularize code with Flask Blueprints for better scalability.
+- Add user email confirmation and password reset functionality.
+- Improve UI/UX with a responsive design.
+- Add pagination for large book lists.
+- Implement API endpoints for integration with frontend frameworks or mobile apps
+
+---
+
+## License
+This project is open source and available under the MIT License.
+
+---
+
+## Acknowledgements
+- Inspired by learning Flask through small projects and tutorials.
+- Special thanks to the Flask community and official documentation.
