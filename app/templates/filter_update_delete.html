@@ -1,20 +1,18 @@
 {% extends "base_loggedin.html" %}
 
-{% block title %}Filter data{% endblock %}
+{% block title %}{% endblock %}
 
 {% block content %}
 <div class="parent-container">
 <div class="centered-div">
-    <center><h1>Showing All Books</h1></center>
-    <div>
-        <center>
+    <center><h1>Your Book Shelf.</h1></center>
+    <div style="text-align: center;">
     <form action="{{ url_for('filter_update_delete') }}" method="post">
-    <!-- <label for="filter_data_query">Filter data</label><br> -->
-    <input type="text" class="form-control" name="filter_data_query" placeholder="Looking for something specific?">
-   <button type="button" class="btn btn-outline-success" data-mdb-ripple-init data-mdb-ripple-color="dark">Search</button>
-</center>
+        <input type="text" class="form-control" name="filter_data_query" placeholder="Looking for something specific?">
+        <button type="submit" class="btn btn-outline-success" data-mdb-ripple-init data-mdb-ripple-color="dark">Search</button>
     </form>
-    </div>
+</div>
+
 
 </div class="table-filter">
     <table id="customers">

@@ -119,6 +119,7 @@ def setup_routes(app):
             input_user = request.form.get('filter_data_query', '').strip()
             search_term = f"%{input_user}%"
 
+            # Get all current user's books that match search text in title, author, or status
             fil_data = Books.query.join(User).filter(
                 # only current users data
                 Books.user_id == current_user.id,
@@ -128,7 +129,7 @@ def setup_routes(app):
                 Books.status.ilike(search_term)
                 )
             ).all()
-                
+
             return render_template('filter_update_delete.html', books=fil_data)
 
         else:
@@ -138,6 +139,7 @@ def setup_routes(app):
     @app.route('/dashboard/update/<int:id>', methods=["GET", "POST"])
     @login_required
     def update_data(id):
+        # Get one book by its id, but only if it belongs to the current user
         user_to_update = Books.query.filter(
             Books.id == id, 
             Books.user_id == current_user.id
@@ -169,7 +171,7 @@ def setup_routes(app):
         form = BookUpdateForm(obj=user_to_update)
 
         if request.method == 'POST':
-            confirmation = request.form.get['confirm']
+            confirmation = request.form.get('confirm')
 
             if confirmation.strip().lower() == 'delete':
                 db.session.delete(user_to_update)
