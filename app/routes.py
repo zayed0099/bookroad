@@ -181,3 +181,7 @@ def setup_routes(app):
         else:
             return render_template('delete_form.html', form=form, id=id)
                 
+    @app.route('/user/change-password')
+    @login_required
+    def change_password():
+    	pass
