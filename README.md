@@ -19,7 +19,7 @@ A simple **Booklog web application** built with Flask, allowing users to track t
 
 ## Technology Stack
 
-- Python 3.x
+- Python 3.8
 - Flask (with App Factory Pattern)
 - Flask-WTF (Forms)
 - Flask-Login (Authentication)
@@ -57,6 +57,7 @@ This project is open source and available under the MIT License.
 ## Acknowledgements
 - Inspired by learning Flask through small projects and tutorials.
 - Special thanks to the Flask community and official documentation.
+<<<<<<< Updated upstream
 
 ---
 Some photos from the webapp....
@@ -66,3 +67,5 @@ Some photos from the webapp....
 
 ![dash](https://github.com/user-attachments/assets/31f49e68-b734-4c1d-bf24-d7a81973713a)
 ![filter](https://github.com/user-attachments/assets/73443a71-f6c1-48a7-98db-28d6614011e8)
+=======
+>>>>>>> Stashed changes
