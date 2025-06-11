@@ -57,3 +57,12 @@ This project is open source and available under the MIT License.
 ## Acknowledgements
 - Inspired by learning Flask through small projects and tutorials.
 - Special thanks to the Flask community and official documentation.
+
+---
+Some photos from the webapp....
+![home page](https://github.com/user-attachments/assets/92d2aab8-8b29-47c4-917c-b12a19c16d18)
+![login](https://github.com/user-attachments/assets/b1f744e8-cdb6-4a93-b422-6af3915d9d62)
+![signin](https://github.com/user-attachments/assets/612a2a44-639f-41a4-999a-264655fb77a1)
+
+![dash](https://github.com/user-attachments/assets/31f49e68-b734-4c1d-bf24-d7a81973713a)
+![filter](https://github.com/user-attachments/assets/73443a71-f6c1-48a7-98db-28d6614011e8)
